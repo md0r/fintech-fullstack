@@ -1,0 +1,8 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  """A baseline status check for the Fintech API"""
+  getSystemStatus: String!
+}

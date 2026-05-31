@@ -1,0 +1,11 @@
+# NestJS and Node build files
+**/node_modules/
+**/dist/
+**/npm-debug.log
+
+# Environment variables and secrets
+**/.env
+**/postgres_data/
+
+# macOS system files
+.DS_Store

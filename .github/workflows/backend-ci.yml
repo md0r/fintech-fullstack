@@ -18,8 +18,8 @@ jobs:
       postgres:
         image: postgres:16-alpine
         env:
-          POSTGRES_USER: fintech_admin
-          POSTGRES_PASSWORD: secure_password_123
+          POSTGRES_USER: ${{ secrets.CI_POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.CI_POSTGRES_PASSWORD }}
           POSTGRES_DB: fintech_db
         ports:
           - 5432:5432
@@ -51,7 +51,7 @@ jobs:
         run: |
           npx prisma generate
         env:
-          DATABASE_URL: "postgresql://fintech_admin:secure_password_123@localhost:5432/fintech_db?schema=public"
+         DATABASE_URL: "postgresql://${{ secrets.CI_POSTGRES_USER }}:${{ secrets.CI_POSTGRES_PASSWORD }}@localhost:5432/fintech_db?schema=public"
 
       - name: Run NestJS Build Compilation
         run: npm run build

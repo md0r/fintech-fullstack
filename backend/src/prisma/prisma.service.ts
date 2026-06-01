@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
@@ -8,17 +9,23 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   private pool: Pool;
 
   constructor() {
-    // 1. Initialize the standard PostgreSQL connection pool
+    const connectionString = process.env.DATABASE_URL;
+
+    if (!connectionString) {
+      throw new Error('DATABASE_URL is not defined in environment variables');
+    }
+
+    // Initialize PostgreSQL connection pool with explicit options
     const pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
+      connectionString,
     });
 
-    // 2. Wrap the pool inside the official Prisma driver adapter
+    // Create Prisma adapter
     const adapter = new PrismaPg(pool);
 
-    // 3. Forward the adapter instance to the PrismaClient base constructor
+    // Initialize PrismaClient with adapter
     super({ adapter });
-    
+
     this.pool = pool;
   }
 

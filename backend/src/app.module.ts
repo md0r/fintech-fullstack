@@ -2,8 +2,10 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { AppResolver } from './app.resolver';
 import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -14,8 +16,11 @@ import { PrismaModule } from './prisma/prisma.module';
       playground: true,
     }),
     PrismaModule,
+    HealthModule,
+    AuthModule,
+    UserModule,
   ],
   controllers: [],
-  providers: [AppResolver],
+  providers: [],
 })
 export class AppModule {}

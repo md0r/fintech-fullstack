@@ -1,0 +1,81 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthResponse {
+  accessToken: String!
+  refreshToken: String!
+  user: User!
+}
+
+input ChangePasswordInput {
+  newPassword: String!
+  oldPassword: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  """Change user password"""
+  changePassword(changePasswordInput: ChangePasswordInput!): Boolean!
+
+  """Soft delete user account (marks as inactive)"""
+  deleteAccount: Boolean!
+
+  """Login with email and password"""
+  login(loginInput: LoginInput!): AuthResponse!
+
+  """Logout user and invalidate refresh token"""
+  logout: Boolean!
+
+  """Refresh access token using refresh token"""
+  refreshToken(refreshTokenInput: RefreshTokenInput!): AuthResponse!
+
+  """Register a new user account"""
+  signup(signupInput: SignupInput!): AuthResponse!
+
+  """Update user profile information"""
+  updateUser(updateUserInput: UpdateUserInput!): User!
+}
+
+type Query {
+  """Get current authenticated user profile"""
+  getMe: User!
+
+  """Health check endpoint to verify API is operational"""
+  getSystemStatus: String!
+}
+
+input RefreshTokenInput {
+  refreshToken: String!
+}
+
+input SignupInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+}
+
+type User {
+  createdAt: DateTime!
+  email: String!
+  firstName: String!
+  id: ID!
+  isActive: Boolean!
+  lastName: String!
+  updatedAt: DateTime!
+}

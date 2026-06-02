@@ -1,0 +1,19 @@
+query GetMe {
+  getMe {
+    ...UserFields
+  }
+}
+
+mutation UpdateUser($updateUserInput: UpdateUserInput!) {
+  updateUser(updateUserInput: $updateUserInput) {
+    ...UserFields
+  }
+}
+
+mutation ChangePassword($changePasswordInput: ChangePasswordInput!) {
+  changePassword(changePasswordInput: $changePasswordInput)
+}
+
+mutation DeleteAccount {
+  deleteAccount
+}

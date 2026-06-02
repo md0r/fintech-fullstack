@@ -12,3 +12,26 @@
 
 # IDE settings
 .vscode/
+
+# Xcode — user-specific state, not shared
+**/*.xcuserstate
+**/xcuserdata/
+
+# Xcode — build output
+**/DerivedData/
+**/*.xccheckout
+**/*.moved-aside
+**/*.pbxuser
+!default.pbxuser
+**/*.mode1v3
+!default.mode1v3
+**/*.mode2v3
+!default.mode2v3
+**/*.perspectivev3
+!default.perspectivev3
+
+# Swift Package Manager resolved versions (keep Package.resolved for reproducible builds)
+# .package.resolved is intentionally committed
+
+# Mint
+.mint/

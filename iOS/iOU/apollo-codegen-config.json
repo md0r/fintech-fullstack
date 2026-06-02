@@ -1,0 +1,27 @@
+{
+  "schemaNamespace": "iOUAPI",
+  "input": {
+    "operationSearchPaths": [
+      "iOU/User/Data/GraphQL/**/*.graphql"
+    ],
+    "schemaSearchPaths": [
+      "iOU/Core/Network/schema.graphqls"
+    ]
+  },
+  "output": {
+    "testMocks": {
+      "none": {}
+    },
+    "schemaTypes": {
+      "path": "iOU/Core/Network/Generated",
+      "moduleType": {
+        "embeddedInTarget": {
+          "name": "iOU"
+        }
+      }
+    },
+    "operations": {
+      "inSchemaModule": {}
+    }
+  }
+}

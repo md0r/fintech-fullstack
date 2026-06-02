@@ -1,0 +1,33 @@
+mutation Login($loginInput: LoginInput!) {
+  login(loginInput: $loginInput) {
+    accessToken
+    refreshToken
+    user {
+      ...UserFields
+    }
+  }
+}
+
+mutation Signup($signupInput: SignupInput!) {
+  signup(signupInput: $signupInput) {
+    accessToken
+    refreshToken
+    user {
+      ...UserFields
+    }
+  }
+}
+
+mutation RefreshToken($refreshTokenInput: RefreshTokenInput!) {
+  refreshToken(refreshTokenInput: $refreshTokenInput) {
+    accessToken
+    refreshToken
+    user {
+      ...UserFields
+    }
+  }
+}
+
+mutation Logout {
+  logout
+}

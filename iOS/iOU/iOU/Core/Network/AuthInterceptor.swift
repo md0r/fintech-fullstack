@@ -11,7 +11,7 @@ struct AuthInterceptor: HTTPInterceptor {
 
     func intercept(request: URLRequest, next: NextHTTPInterceptorFunction) async throws -> HTTPResponse {
         var mutableRequest = request
-        if let token = keychain.accessToken {
+        if let token = await keychain.accessToken {
             mutableRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         return try await next(mutableRequest)

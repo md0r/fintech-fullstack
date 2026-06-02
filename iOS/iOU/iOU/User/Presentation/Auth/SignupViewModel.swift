@@ -26,8 +26,6 @@ final class SignupViewModel {
     @ObservationIgnored
     @Injected(\.signupUseCase) private var signupUseCase
 
-    var onSignupSuccess: ((AuthTokensEntity) -> Void)?
-
     func signup() async {
         guard isFormValid else { return }
         isLoading = true
@@ -35,13 +33,12 @@ final class SignupViewModel {
         defer { isLoading = false }
 
         do {
-            let result = try await signupUseCase.execute(
+            _ = try await signupUseCase.execute(
                 email: email.trimmingCharacters(in: .whitespaces),
                 password: password,
                 firstName: firstName.trimmingCharacters(in: .whitespaces),
                 lastName: lastName.trimmingCharacters(in: .whitespaces)
             )
-            onSignupSuccess?(result)
             NotificationCenter.default.post(name: .authDidSucceed, object: nil)
         } catch {
             errorMessage = error.localizedDescription

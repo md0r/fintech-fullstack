@@ -1,6 +1,7 @@
 import Apollo
 import FactoryKit
 
+@MainActor
 extension Container {
 
     // MARK: - Core

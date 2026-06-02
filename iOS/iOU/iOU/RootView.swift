@@ -1,7 +1,6 @@
 import FactoryKit
 import SwiftUI
 
-// RootView owns session state and switches between auth and main app.
 struct RootView: View {
     @State private var isAuthenticated = KeychainService.shared.accessToken != nil
     @State private var coordinator = AuthCoordinator()
